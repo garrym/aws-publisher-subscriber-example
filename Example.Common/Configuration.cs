@@ -1,18 +1,19 @@
-﻿using System;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace Example.Common
 {
-    public class Configuration
+    public static class Configuration
     {
-        public Configuration()
+        private static readonly IConfigurationRoot ConfigurationRoot;
+
+        static Configuration()
         {
-            var configurationRoot = new ConfigurationBuilder()
+            ConfigurationRoot = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
         }
 
-        public static string AccessKey = "";
-        public static string SecretKey = "";
+        public static string AccessKey => ConfigurationRoot["AWS:AccessKey"];
+        public static string SecretKey => ConfigurationRoot["AWS:SecretKey"];
     }
 }
