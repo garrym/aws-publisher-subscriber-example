@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Amazon;
 using Example.Common;
+using Example.Common.Subscribing;
 
 namespace Example.SubscriberApplication
 {
@@ -16,10 +17,8 @@ namespace Example.SubscriberApplication
         {
             Console.WriteLine("Listening...");
 
-            var topicName = "ExampleTopic";
-
             var subscriber = new Subscriber(Configuration.AccessKey, Configuration.SecretKey, RegionEndpoint.EUWest2);
-            await subscriber.ListenAsync("ExampleSubscriber", topicName);
+            await subscriber.ListenAsync("ExampleTopic", "ExampleSubscriber");
         }
     }
 }
