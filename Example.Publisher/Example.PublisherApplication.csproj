@@ -6,13 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.3.0.22" />
-    <PackageReference Include="microsoft.extensions.configuration" Version="2.0.0" />
-    <PackageReference Include="microsoft.extensions.configuration.json" Version="2.0.0" />
+    <ProjectReference Include="..\Example.Common.Core\Example.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Example.Common\Example.Common.csproj" />
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

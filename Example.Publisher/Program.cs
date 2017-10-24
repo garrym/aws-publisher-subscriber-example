@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Amazon;
 using Example.Common;
+using Example.Common.Publishing;
 
 namespace Example.PublisherApplication
 {
@@ -21,9 +22,7 @@ namespace Example.PublisherApplication
                 Console.WriteLine("Type a message to send:");
                 var message = Console.ReadLine();
 
-                var topicName = "ExampleTopic";
-
-                await publisher.PublishAsync(topicName, message);
+                await publisher.PublishAsync("ExampleTopic", message);
 
                 Console.WriteLine("Message sent");
             }
