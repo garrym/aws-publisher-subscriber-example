@@ -54,7 +54,7 @@ namespace Example.SubscriberApplication
             _subscriptionArn = await _snsClient.SubscribeQueueAsync(_topicArn, _sqsClient, _queueUrl);
         }
 
-        public async Task ListenAsync(Func<Message, Task> messageHandler)
+        public async Task ListenAsync(Action<Message> messageHandler)
         {
             if (!_initialised)
                 await Initialise();
@@ -64,7 +64,7 @@ namespace Example.SubscriberApplication
                 var responseMessage = await _sqsClient.ReceiveMessageAsync(_queueUrl);
                 foreach (var message in responseMessage.Messages)
                 {
-                    await messageHandler(message);
+                    messageHandler(message);
                     await _sqsClient.DeleteMessageAsync(_queueUrl, message.ReceiptHandle);
                 }
             }

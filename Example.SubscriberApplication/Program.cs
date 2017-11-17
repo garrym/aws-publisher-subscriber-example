@@ -25,7 +25,7 @@ namespace Example.SubscriberApplication
             using (var snsClient = new AmazonSimpleNotificationServiceClient(credentials))
             {
                 var subscriber = new Subscriber(sqsClient, snsClient, "topicName", "queueName");
-                await subscriber.ListenAsync(async message => {
+                await subscriber.ListenAsync(message => {
                     Console.WriteLine("Received message: " + message);
                 });
             }

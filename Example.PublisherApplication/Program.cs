@@ -12,7 +12,7 @@ namespace Example.PublisherApplication
     {
         static void Main()
         {
-            Run().Wait();
+            //Run().Wait();
         }
 
         private static async Task Run()

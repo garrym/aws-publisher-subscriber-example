@@ -6,6 +6,6 @@ namespace Example.SubscriberApplication
 {
     public interface ISubscriber
     {
-        Task ListenAsync(Func<Message, Task> messageHandler);
+        Task ListenAsync(Action<Message> messageHandler);
     }
 }
