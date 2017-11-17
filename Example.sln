@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.PublisherApplication", "Example.Publisher\Example.PublisherApplication.csproj", "{4F29D30F-BC5D-451C-8622-A5C911B90124}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.PublisherApplication", "Example.PublisherApplication\Example.PublisherApplication.csproj", "{4F29D30F-BC5D-451C-8622-A5C911B90124}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.SubscriberApplication", "Example.Subscriber\Example.SubscriberApplication.csproj", "{5117FDA5-40A8-45CC-91AD-AA5FC7ED7C53}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Common", "Example.Common\Example.Common.csproj", "{94B9EABA-677E-44BA-8783-132FA626EE22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.SubscriberApplication", "Example.SubscriberApplication\Example.SubscriberApplication.csproj", "{5117FDA5-40A8-45CC-91AD-AA5FC7ED7C53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{5117FDA5-40A8-45CC-91AD-AA5FC7ED7C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5117FDA5-40A8-45CC-91AD-AA5FC7ED7C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5117FDA5-40A8-45CC-91AD-AA5FC7ED7C53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94B9EABA-677E-44BA-8783-132FA626EE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94B9EABA-677E-44BA-8783-132FA626EE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94B9EABA-677E-44BA-8783-132FA626EE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94B9EABA-677E-44BA-8783-132FA626EE22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
