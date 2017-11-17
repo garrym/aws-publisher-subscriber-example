@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Amazon;
 using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;
+using Amazon.Runtime;
+
 
 namespace Example.PublisherApplication
 {
