@@ -61,8 +61,8 @@ namespace Example.SubscriberApplication
 
             while (true)
             {
-                var responseMessage = await _sqsClient.ReceiveMessageAsync(new ReceiveMessageRequest { QueueUrl = _queueUrl, WaitTimeSeconds = 10 });
-                foreach (var message in responseMessage.Messages)
+                var response = await _sqsClient.ReceiveMessageAsync(new ReceiveMessageRequest { QueueUrl = _queueUrl, WaitTimeSeconds = 10 });
+                foreach (var message in response.Messages)
                 {
                     messageHandler(message);
                     await _sqsClient.DeleteMessageAsync(_queueUrl, message.ReceiptHandle);
