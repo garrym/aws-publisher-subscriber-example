@@ -18,7 +18,7 @@ namespace Example.SubscriberApplication
         private AmazonSimpleNotificationServiceClient _snsClient;
         private string _topicArn, _topicName, _queueUrl, _queueName, _subscriptionArn;
         private bool _initialised = false;
-        private bool disposed = false;
+        private bool _disposed = false;
 
         public Subscriber(AmazonSQSClient sqsClient, AmazonSimpleNotificationServiceClient snsClient, string topicName, string queueName)
         {
@@ -61,7 +61,7 @@ namespace Example.SubscriberApplication
 
             while (true)
             {
-                var responseMessage = await _sqsClient.ReceiveMessageAsync(_queueUrl);
+                var responseMessage = await _sqsClient.ReceiveMessageAsync(new ReceiveMessageRequest { QueueUrl = _queueUrl, WaitTimeSeconds = 10 });
                 foreach (var message in responseMessage.Messages)
                 {
                     messageHandler(message);
@@ -72,7 +72,7 @@ namespace Example.SubscriberApplication
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
@@ -82,7 +82,7 @@ namespace Example.SubscriberApplication
                     _snsClient.Dispose();
                     _snsClient = null;
                 }
-                disposed = true;
+                _disposed = true;
             }
         }
 

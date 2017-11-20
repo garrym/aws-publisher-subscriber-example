@@ -13,6 +13,7 @@ namespace Example.PublisherApplication
         private readonly string _topicName;
         private string _topicArn;
         private bool initialised = false;
+        private bool disposed = false;
 
         public Publisher(AmazonSimpleNotificationServiceClient snsClient, string topicName)
         {
@@ -34,8 +35,6 @@ namespace Example.PublisherApplication
 
             await _snsClient.PublishAsync(_topicArn, message);
         }
-
-        private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
         {

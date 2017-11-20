@@ -12,7 +12,7 @@ namespace Example.PublisherApplication
     {
         static void Main()
         {
-            //Run().Wait();
+            Run().Wait();
         }
 
         private static async Task Run()
@@ -29,8 +29,6 @@ namespace Example.PublisherApplication
                     var message = Console.ReadLine();
 
                     await publisher.PublishAsync(message);
-
-                    Console.WriteLine("Message sent");
                 }
             }
         }
