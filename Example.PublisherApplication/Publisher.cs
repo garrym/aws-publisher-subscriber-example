@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Net;
 using System.Threading.Tasks;
-using Amazon;
 using Amazon.SimpleNotificationService;
-using Amazon.SimpleNotificationService.Model;
 
 namespace Example.PublisherApplication
 {
-    public class Publisher : IPublisher, IDisposable
+    public class Publisher : IDisposable
     {
         private AmazonSimpleNotificationServiceClient _snsClient;
         private readonly string _topicName;
         private string _topicArn;
-        private bool _initialised = false;
-        private bool _disposed = false;
+        private bool _initialised;
+        private bool _disposed;
 
         public Publisher(AmazonSimpleNotificationServiceClient snsClient, string topicName)
         {

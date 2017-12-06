@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Amazon;
 using Amazon.Runtime;
 using Amazon.SimpleNotificationService;
-using Amazon.SimpleNotificationService.Model;
 using Amazon.SQS;
 
 namespace Example.SubscriberApplication
@@ -12,19 +10,20 @@ namespace Example.SubscriberApplication
     {
         static void Main()
         {
-            Run().Wait();
+            Run().GetAwaiter().GetResult();
         }
 
-        static async Task Run()
+        private static async Task Run()
         {
-            Console.WriteLine("Listening...");
-
             var credentials = new BasicAWSCredentials("accessKey", "secretKey");
             
             using (var sqsClient = new AmazonSQSClient(credentials))
             using (var snsClient = new AmazonSimpleNotificationServiceClient(credentials))
             {
                 var subscriber = new Subscriber(sqsClient, snsClient, "topicName", "queueName");
+
+                Console.WriteLine("Listening...");
+
                 await subscriber.ListenAsync(message => {
                     Console.WriteLine("Received message: " + message);
                 });

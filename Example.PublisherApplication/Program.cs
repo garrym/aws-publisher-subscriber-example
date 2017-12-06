@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Amazon;
 using Amazon.SimpleNotificationService;
-using Amazon.SimpleNotificationService.Model;
 using Amazon.Runtime;
-
 
 namespace Example.PublisherApplication
 {
@@ -12,7 +9,7 @@ namespace Example.PublisherApplication
     {
         static void Main()
         {
-            Run().Wait();
+            Run().GetAwaiter().GetResult();
         }
 
         private static async Task Run()

@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using Amazon;
-using Amazon.Runtime;
 using Amazon.SimpleNotificationService;
-using Amazon.SimpleNotificationService.Model;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 
 namespace Example.SubscriberApplication
 {
-    public class Subscriber : ISubscriber, IDisposable
+    public class Subscriber : IDisposable
     {
         private AmazonSQSClient _sqsClient;
         private AmazonSimpleNotificationServiceClient _snsClient;
-        private string _topicArn, _topicName, _queueUrl, _queueName, _subscriptionArn;
-        private bool _initialised = false;
-        private bool _disposed = false;
+        private readonly string _topicName;
+        private string _topicArn;
+        private readonly string _queueName;
+        private string _queueUrl;
+        private bool _initialised;
+        private bool _disposed;
 
         public Subscriber(AmazonSQSClient sqsClient, AmazonSimpleNotificationServiceClient snsClient, string topicName, string queueName)
         {
@@ -46,12 +45,11 @@ namespace Example.SubscriberApplication
                 var existingSubscription = currentSubscriptions.FirstOrDefault(x => x.Endpoint == queueArn);
                 if (existingSubscription != null)
                 {
-                    _subscriptionArn = existingSubscription.SubscriptionArn;
                     return;
                 }
             }
 
-            _subscriptionArn = await _snsClient.SubscribeQueueAsync(_topicArn, _sqsClient, _queueUrl);
+            await _snsClient.SubscribeQueueAsync(_topicArn, _sqsClient, _queueUrl);
         }
 
         public async Task ListenAsync(Action<Message> messageHandler)
